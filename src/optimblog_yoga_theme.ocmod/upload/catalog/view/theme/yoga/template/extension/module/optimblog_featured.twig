@@ -1,0 +1,51 @@
+<div class="container">
+  <h3 class="my-3">{{ heading_title }}</h3>
+        <div class="blog-featured row row-grid">
+    {% for information in informations %}
+    <div class="information-layout col-12 col-md-6 col-lg-4 mb-3">
+      <div class="thumbnail">
+        <div class="carusel-article">
+          <div class="article rounded">
+            {% if information.thumb %}
+
+            <div class="image">
+              <a class="article-images mb-3" href="{{ information.href }}">
+                <img src="{{ information.thumb }}" alt="{{ information.title }}" title="{{ information.title }}"
+                     loading="lazy">
+                {% if date %}
+                <span class="article-info d-flex flex-column bg-white p-2 color-dark text-dark">{{
+                  information.date_added }}</span>
+                {% endif %}
+              </a>
+            </div>
+            {% endif %}
+            <div class="caption">
+              <h3 class="article-title font-size-125 my-2 px-3">{{ information.title }}</h3>
+              <p class="mb-3 px-3">{{ information.description[:100] }} <a class="link" href="{{ information.href }}">{{
+                  button_more }}</a></p>
+
+              <div class="mb-3 px-3">
+                {% if author %}
+                <span><i class="fa fa-user-o" aria-hidden="true"></i> {{ information.author }}</span>
+                {% endif %} |
+                {% if review %}
+                <span><i class="fa fa-comment-o" aria-hidden="true"></i> {{ information.reviews }}</span>
+                {% endif %}
+                {% if information.rating %}
+                <p class="rating"> {% for i in 1..5 %}
+                  {% if information.rating < i %} <span class="fa fa-stack"><i
+                       class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i
+                         class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                    {% endfor %} </p>
+                {% endif %}
+                <div class="mt-3"><a href="{{ information.href }}" type="button" class="btn btn-primary"
+                     title="{{ text_read }}">{{ text_read }}</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
