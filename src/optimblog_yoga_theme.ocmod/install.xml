@@ -206,7 +206,7 @@
         {% endfor %} </div>
         {% endif %}
         {% if products %}
-          <h3>{{ text_related_product }}</h3>
+          <h3 {% if informations %}class="mt-5"{% endif %}>{{ text_related_product }}</h3>
           <div class="carusel" >
             <div class="d-flex" id="carusel-slider-2">
               {% for product in products %}
